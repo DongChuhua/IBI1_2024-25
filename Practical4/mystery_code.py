@@ -1,6 +1,5 @@
 # What does this piece of code do?
-# Answer:
-
+# Answer: print out the number of tries it took for two random numbers between 1 and 6 is equal.
 # Import libraries
 # randint allows drawing a random number,
 # e.g. randint(1,5) draws a number between 1 and 5
