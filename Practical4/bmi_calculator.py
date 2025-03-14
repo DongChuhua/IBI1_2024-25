@@ -1,6 +1,6 @@
 # input the person's weight
 # input the person's height
-# calculate for the BMI = weight / height**height
+# calculate for the BMI = weight / height*height
 # print BMI
 # if BMI > 30:
     # print ("obese")
