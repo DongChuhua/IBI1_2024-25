@@ -11,10 +11,16 @@ label_uk=["Northern Ireland","Wales","Scotland","England"]
 label_zhejiang=["Fujian","Jiangxi","Anhui","Zhejiang","Jiangsu"]
 
 
+#create a new bigger window to hold the two pie charts
+#apart the window into two parts
+#creat the two pie charts and put them in the two parts
+#set the labels and colors
+#set the title
+#adjust the layout of the subplots
+#show the pie charts
 import matplotlib.pyplot as plt
 plt.figure(figsize=(10, 6)) # create a new graphics window, set the width=10 and height=6, 
-                            #show the figure in one window
-
+                            
 #create the pie charts of the distribution of population sizes in UK 
 plt.subplot(1, 2, 1) # create a subplot of 1 row and 2 columns,put first figure in the first column
 plt.pie(sorted_uk,labels=label_uk,autopct='%1.2f%%',colors=["lightblue","coral","gold","lavender"])#reserve two decimals,set color
