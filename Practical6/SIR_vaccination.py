@@ -37,7 +37,7 @@ for rate in vaccination_rate:
         SP = new_SP
         IP = new_IP
         RP = new_RP
-    plt.plot(I, label=f"infected_population with vaccination rate {rate}")
+    plt.plot(I,label=f"infected_population with vaccination rate {rate}")
 
 plt.title("SIR model for 10000 people with different vaccination rate")
 plt.xlabel("time")
