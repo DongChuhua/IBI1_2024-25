@@ -14,12 +14,13 @@ SP = 9999 #susceptible_population
 IP  = 1 #infected_population
 RP = 0 #recovered_population
 N = 10000 #total_population
-beta = 1 #infection_rate
+beta = 0.3 #infection_rate
 gamma = 0.05 #recovery_rate
 
 #loop every point
 new_population=population.copy()
 for a in range(10):  #loop 100 times
+    #loop every point
     for x in range(100):
         for y in range(100):
             #try to infect the neighbor of the infected person
@@ -34,9 +35,9 @@ for a in range(10):  #loop 100 times
                 #try to recover the infected person (gamma recovery rate)
                 if np.random.choice(range(2),1,p=[1-gamma,gamma]).sum() == 1:
                     new_population[x,y] = 2
-            population = new_population
-            plt.imshow(population,cmap='viridis',vmin=0, vmax=1, interpolation='nearest')
-plt.show()
+    population = new_population
+    plt.imshow(population,cmap='viridis',vmin=0, vmax=2, interpolation='nearest')
+    plt.show()
         
             
    
