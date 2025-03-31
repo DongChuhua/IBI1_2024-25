@@ -7,6 +7,11 @@ population = np.zeros((100,100))
 outbreak = np.random.choice(range(100),2)
 population[outbreak[0],outbreak[1]] = 1
 
+#show the initial state of the population
+plt.figure(figsize=(6,4),dpi=150)
+plt.imshow(population,cmap='viridis',vmin=0, vmax=2, interpolation='nearest')
+plt.title('Initial State')
+plt.show()
 
 SP = 9999 #susceptible_population
 IP  = 1 #infected_population
@@ -35,9 +40,12 @@ for a in range(100):  #loop 100 times
                     new_population[x,y] = 2
     population = new_population
    #plot the heat map
-    plt.figure(figsize=(6,4),dpi=150)
-    plt.imshow(population,cmap='viridis',vmin=0, vmax=2, interpolation='nearest')
-    plt.show()
+    if a%10 == 0:
+        plt.figure(figsize=(6,4),dpi=150)
+        plt.imshow(population,cmap='viridis',vmin=0, vmax=2, interpolation='nearest')
+        plt.show()
+        
+  
         
             
    
