@@ -15,6 +15,7 @@ import re
 def cut_introns(seq, donor, acceptor):
     introns = []
     donor_sites = [m.start() for m in re.finditer(donor, seq)]
+    
     for i in donor_sites:
         A = re.search(acceptor, seq[i+2:])
         if A:
@@ -22,6 +23,7 @@ def cut_introns(seq, donor, acceptor):
             introns.append(new_introns)
 
     return introns
+
 
 seq = ''
 gene_name = ''
@@ -34,24 +36,94 @@ if combination == 'GTAG':
 
         for line in file:
             line = line.strip()
-            if seq and line.startswith('>'):
-                #to check the squence of ATAT box in the introns
-                total_introns = cut_introns(seq, 'GT', 'AG')  #cut the introns from the sequence
-                
-                
-                for one_intron in total_introns:
-                    if gene_name and re.search(r'TATA[AT]A[AT]', one_intron):
-                        out.write('>' + gene_name[0] + '\n' + one_intron + '\n')
+            if line.startswith('>'):
+                if seq:
+                    total_introns = cut_introns(seq, 'GT', 'AG')  #cut the introns from the sequence
+                               
+                    for one_intron in total_introns:
+                        if gene_name and re.search(r'TATA[AT]A[AT]', one_intron):
+                            #calculate the number of TATA boxes in the sequence
+                            TATA_count = str(len(re.findall(r'TATA[AT]A[AT]', one_intron))) 
+                            out.write('>' + gene_name[0] + ' number_of_TATA_box:' + TATA_count + '\n' + one_intron + '\n')
                         
-                        gene_name = ''#reset the gene name for the next gene
-                        seq = '' #reset the sequence for the next gene
-                        total_introns = []
+                    gene_name = ''#reset the gene name for the next gene
+                    seq = '' #reset the sequence for the next gene
+                    total_introns = []
                         
-                gene_name = re.findall(r'gene:(\S+)', line)
+                gene_name = re.findall(r'>(\S+)', line)
         
             else:
                 seq += line.strip()
-                
+        
+        # check the last gene in the file
+        total_introns = cut_introns(seq, 'GT', 'AG')  #cut the introns from the sequence                     
+        for one_intron in total_introns:
+            if gene_name and re.search(r'TATA[AT]A[AT]', one_intron):
+                out.write('>' + gene_name[0] + '\n' + one_intron + '\n')      
+    
+if combination == 'GCAG':
+    with open ('tata_genes.fa', "r") as file, open('GCAG_spliced_genes.fa', "w") as out:
+
+        for line in file:
+            line = line.strip()
+            if line.startswith('>'):
+                if seq:
+                    total_introns = cut_introns(seq, 'GC', 'AG')  #cut the introns from the sequence
+                               
+                    for one_intron in total_introns:
+                        if gene_name and re.search(r'TATA[AT]A[AT]', one_intron):
+                            #calculate the number of TATA boxes in the sequence
+                            TATA_count = str(len(re.findall(r'TATA[AT]A[AT]', one_intron))) 
+                            out.write('>' + gene_name[0] + ' number_of_TATA_box:' + TATA_count + '\n' + one_intron + '\n')
+                        
+                    gene_name = ''#reset the gene name for the next gene
+                    seq = '' #reset the sequence for the next gene
+                    total_introns = []
+                        
+                gene_name = re.findall(r'>(\S+)', line)
+        
+            else:
+                seq += line.strip()
+        
+        # check the last gene in the file
+        total_introns = cut_introns(seq, 'GC', 'AG')  #cut the introns from the sequence                     
+        for one_intron in total_introns:
+            if gene_name and re.search(r'TATA[AT]A[AT]', one_intron):
+                out.write('>' + gene_name[0] + '\n' + one_intron + '\n') 
+
+if combination == 'ATAC':
+    with open ('tata_genes.fa', "r") as file, open('ATAC_spliced_genes.fa', "w") as out:
+
+        for line in file:
+            line = line.strip()
+            if line.startswith('>'):
+                if seq:
+                    total_introns = cut_introns(seq, 'AT', 'AC')  #cut the introns from the sequence
+                               
+                    for one_intron in total_introns:
+                        if gene_name and re.search(r'TATA[AT]A[AT]', one_intron):
+                            #calculate the number of TATA boxes in the sequence
+                            TATA_count = str(len(re.findall(r'TATA[AT]A[AT]', one_intron))) 
+                            out.write('>' + gene_name[0] + ' number_of_TATA_box:' + TATA_count + '\n' + one_intron + '\n')
+                        
+                    gene_name = ''#reset the gene name for the next gene
+                    seq = '' #reset the sequence for the next gene
+                    total_introns = []
+                        
+                gene_name = re.findall(r'>(\S+)', line)
+        
+            else:
+                seq += line.strip()
+        
+        # check the last gene in the file
+        total_introns = cut_introns(seq, 'AT', 'AC')  #cut the introns from the sequence                     
+        for one_intron in total_introns:
+            if gene_name and re.search(r'TATA[AT]A[AT]', one_intron):
+                out.write('>' + gene_name[0] + '\n' + one_intron + '\n')  
+
+  
+        
+                    
 
 
 
