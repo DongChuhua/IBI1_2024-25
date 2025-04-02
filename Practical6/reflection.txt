@@ -1,0 +1,3 @@
+I think this week's practical is interesting. I was try to create a model and visualise it with figure. 
+the heat map (2D demonstration) is really a cool thing, but also more difficult.
+It contains many loops！and when working on it, I truly realize the importance of the Pseudocode, which can help me organise the logic flow.
