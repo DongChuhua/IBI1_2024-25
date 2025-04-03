@@ -24,19 +24,19 @@ with open('Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa', 'r') as file, open('ta
     for line in file:
         line = line.strip()
         if line.startswith('>'):
-            if re.search(r'TATA[AT]A[AT]', seq):
+            if gene_name and re.search(r'TATA[AT]A[AT]', seq):
                 out.write('>' + gene_name[0] + '\n' + seq + '\n')
                 gene_name = ''#reset the gene name for the next gene
             seq = ''#reset the sequence for the next gene
 
-            gene_name = re.findall('gene:(\S+)', line)
+            gene_name = re.findall(r'gene:(\S+)', line)
         
         #if the line does not start with >, it is part of the sequence, so add it to the seq variable    
         else:
             seq += line.strip()
     
     # check the last gene in the file
-    if re.search(r'TATA[AT]A[AT]', seq):
+    if gene_name and re.search(r'TATA[AT]A[AT]', seq):
         out.write('>' + gene_name[0] + '\n' + seq + '\n')
                 
                 
