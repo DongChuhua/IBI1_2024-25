@@ -1,5 +1,6 @@
 import re
 seq = 'ATGCAAGTGGTGTGTCTGTTCTGAGAGGGCCTAA'
+
 #locte every GT in the sequence
 #from the GT, try to find the next AG
 #the sequence between GT and AG is an intron (including GT and AG)
@@ -7,11 +8,9 @@ seq = 'ATGCAAGTGGTGTGTCTGTTCTGAGAGGGCCTAA'
 #find the next GT after the AG
 #loop until there is no AG or no GT
 #output the largest intron
+   
 
-
-largest_intron = ''   
-
-# Find all positions of 'GT' (splice-donor sites)
+# Find all start positions of 'GT' (splice-donor sites)
 GT_sites = [m.start() for m in re.finditer('GT', seq)]   
 largest_intron = ''
 for i in GT_sites: 
