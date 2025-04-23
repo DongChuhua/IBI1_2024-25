@@ -12,4 +12,4 @@ class patients:
 
 # example usage:   
 patient_x = patients("DongChuhua", 18, "2025-04-08", "fever")
-print(patients.details(patient_x))
+print(patient_x.details())
