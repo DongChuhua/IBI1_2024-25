@@ -11,7 +11,7 @@ dalys_data = pd.read_csv('dalys-rate-from-all-causes.csv')
 
 #show the third column(the year) for the first 10 rows
 print(dalys_data.iloc[0:10,2])
-#the 10th yar with DALYs data recorded inAfghanistan: 1999
+#the 10th year with DALYs data recorded in Afghanistan: 1999
 
 
 #show DALYs for all countries in 1990
