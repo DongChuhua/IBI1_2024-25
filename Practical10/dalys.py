@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-os.chdir('D:\IBI\IBI1_2024-25\Practical9')
+os.chdir('D:\IBI\IBI1_2024-25\Practical10')
 #import the data
 dalys_data = pd.read_csv('dalys-rate-from-all-causes.csv')
 
