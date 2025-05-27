@@ -13,7 +13,7 @@ tata_pattern = re.compile(r'TATA[AT]A[AT]')
 
 with open('tata_genes.fa', 'r') as infile, open(f'{combination}_spliced_genes.fa', 'w') as outfile:
     seq = ''
-    gene_name = 'Unknown'
+    gene_name = ''
     
     for line in infile:
         line = line.strip()
@@ -37,5 +37,4 @@ with open('tata_genes.fa', 'r') as infile, open(f'{combination}_spliced_genes.fa
     if seq and splice_pattern.search(seq):
         tata_matches = tata_pattern.findall(seq)
         if tata_matches:
-            outfile.write(f'>{gene_name} number_of_TATA_box:{len(tata_matches)}\n')
-            outfile.write(f'{seq}\n')
+            outfile.write(f'>{gene_name} number_of_TATA_box:{len(tata_matches)}\n{seq}\n')
