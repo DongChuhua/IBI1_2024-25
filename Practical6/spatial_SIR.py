@@ -1,3 +1,12 @@
+#make array of all susceptible population
+#randomly choose the location of the outbreak
+#show the initial state of the population
+#loop every point
+#located the infected person
+#try to infect the neighbor of the infected person
+#try to recover the infected person
+#plot the heat map
+
 import numpy as np
 import matplotlib.pyplot as plt
 
