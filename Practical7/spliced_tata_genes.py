@@ -60,7 +60,6 @@ if combination in donor_acceptor:
                     seq = '' #reset the sequence for the next gene
                     total_introns = [] #reset
                 gene_name = re.findall(r'>(\S+)', line)
-        
             else: # for the sequence part
                 seq += line.strip()
         
@@ -68,7 +67,8 @@ if combination in donor_acceptor:
         total_introns = cut_introns(seq, donor, acceptor)  #cut the introns from the sequence                     
         for one_intron in total_introns:
             if gene_name and re.search(r'TATA[AT]A[AT]', one_intron):
-                out.write('>' + gene_name[0] + '\n' + one_intron + '\n')      
+                TATA_count = str(len(re.findall(r'TATA[AT]A[AT]', one_intron))) #count the number of TATA box sequence
+                out.write('>' + gene_name[0] + ' number_of_TATA_box:' + TATA_count + '\n' + one_intron + '\n')  
     
 
   
