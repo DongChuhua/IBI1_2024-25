@@ -1,3 +1,0 @@
-question: How has the relationship between the DALYs in China and the UK changed over time? Are they becoming more similar, less similar?
-line: 40-49
-results:the DALYs in China and the UK all declined over time and they become more similar.
