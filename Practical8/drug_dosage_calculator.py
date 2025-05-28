@@ -1,5 +1,5 @@
 def drug_dosage_calculator (weight_kg, strength):
-    if weight_kg >= 100 or weight_kg <= 10: # Check if weight is between 100 kg and 200 kg
+    if weight_kg >= 100 or weight_kg <= 10: # Check if weight is between 10 kg and 100 kg
         raise ValueError("Weight must be between 10 kg and 100 kg.")
     else:
         if strength == "120 mg/5 ml":
